@@ -51,7 +51,6 @@ img
     min-height: 90%;
     margin-bottom: 0px;
     position: static;
-    transition: min-height 3s ease-in-out;
 }
 
 #title-text, #title-next
