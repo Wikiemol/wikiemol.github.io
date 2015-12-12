@@ -96,7 +96,7 @@ willo.changeAnimationDelay = function(element, delay) {
  * Displays the information wells
  */
 willo.displayInfo = function() {
-    var whoAmI = "I am a full stack software developer, mathematician, and graphic designer with the ability to build fast, effective, and scalable websites. I have 5+ years experience in web development technologies, such as JavaScript, HTML5, and CSS. Most importantly, I am someone who strives to be your next web developer.";
+    var whoAmI = "I am a full stack software developer, mathematician, and graphic designer with the ability to build fast, effective, and scalable websites. I have 5+ years experience in web development technologies, such as NodeJS, PHP, JavaScript, HTML5, and CSS. Most importantly, I am someone who strives to be your next web developer.";
 
     var whyHire = "I am a passionate worker who loves to build things that ship. I write clean, readable code, and build clean, readable websites. When it comes to development and design, I pay very close attention to the little things. ";
 
