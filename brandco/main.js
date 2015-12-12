@@ -50,11 +50,24 @@ willo.createInformationWell = function(args) {
         .append(header)
         .append(paragraph)
         .mouseenter(function() {
-            paragraph.show("slow").fadeIn("slow");
+            //paragraph.show("slow").fadeIn("slow");
+            paragraph
+                .css("max-height", "200px")
+                .css("opacity", "1")
+                .css("overflow-y", "hidden")
+                .on('transitionEnd webkitTransitionEnd oTransitionEnd', function() {
+                    paragraph.css("overflow-y", "auto");
+                });
             args.appendTo.css("background", willo.colorToString(args.background));
+
         })
         .mouseleave(function() {
-            paragraph.hide("slow").fadeOut("slow");
+            //paragraph.hide("slow").fadeOut("slow");
+            paragraph
+                .css("max-height", "0")
+                .css("opacity", "0")
+                .css("overflow-y", "hidden");
+
             args.appendTo.css("background", "#e9ece5");
         });
 
@@ -121,8 +134,19 @@ willo.displayInfo = function() {
          "appendTo": $("body")
     }).addClass("animated fadeIn");
 }
+willo.changeFontSize = function() {
+    console.log("hii");
+    if(window.innerWidth < 400)
+        $("p").css("font-size", "35px");
+    else
+        $("p").css("font-size", "22px");
+}
 
 window.onload = function() {
+    console.log("load");
+    $(window).resize(function () {
+        willo.changeFontSize();
+    });
     $("#title-text").addClass("animated fadeIn");
     $("#title-next")
         .addClass("animated fadeIn")
@@ -132,5 +156,6 @@ window.onload = function() {
                 .hide("slow");
             $("#title").css("min-height", "0px").css("margin-bottom", "20px");
             willo.displayInfo();
+            willo.changeFontSize();
         });
 };

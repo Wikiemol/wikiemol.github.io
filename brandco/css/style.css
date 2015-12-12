@@ -6,8 +6,10 @@
 p 
 {
     font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    display: none;
+    max-height: 0px;
+    height: auto;
+    opacity: 0;
+    transition: all 2s;
 }
 
 button 
@@ -41,6 +43,7 @@ img
     -ms-animation-delay: 1s;
     animation-delay: 1s;
     border-style: none;
+    overflow: hidden;
 }
 
 #title 
