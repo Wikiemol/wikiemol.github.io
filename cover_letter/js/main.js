@@ -1,4 +1,5 @@
 var willo = {};
+willo.HOST_RES = "http://wikiemol.github.io/cover_letter/res/"
 /**
  * Asserts that a given object has all of the keys passed in as arguments.
  * Useful for labeling necessary arguments.
@@ -92,22 +93,36 @@ willo.changeAnimationDelay = function(element, delay) {
     return element;
 }
 
+willo.whoAmIReq = new XMLHttpRequest();
+willo.whoAmIReq.addEventListener('load', function() {
+    willo.whoAmI = this.responseText;
+})
+willo.whoAmIReq.open("GET", "res/whoami");
+willo.whoAmIReq.send();
+
+willo.whyhireReq = new XMLHttpRequest();
+willo.whyhireReq.addEventListener('load', function() {
+    willo.whyhire = this.responseText;
+})
+willo.whyhireReq.open("GET", "res/whyhire");
+willo.whyhireReq.send();
+
+
 /**
  * Displays the information wells
  */
 willo.displayInfo = function() {
-    var whoAmI = "I am a full stack software developer, mathematician, and graphic designer with the ability to build fast, effective, and scalable websites. I have 5+ years experience in web development technologies, such as JavaScript, HTML5, and CSS. Most importantly, I am someone who strives to be your next web developer.";
-
-    var whyHire = "I am a passionate worker who loves to build things that ship. I write clean, readable code, and build clean, readable websites. When it comes to development and design, I pay very close attention to the little things. ";
-
+    var whoAmI = willo.whoAmI;
+    var whyHire = willo.whyhire;
 
     var contact = "<div class='text-center'>" +
                     "It can't hurt" +
                   "</div>" +
                   "<div class='text-center'>" +
-                      "<a target='_blank' href='https://github.com/Wikiemol'><img src='res/github10.png'></a>" + 
-                      "<a href='mailto:kingweko@gmail.com'><img src='res/logotype181.png'></a>" +
-                      "<a target='_blank' href='https://drive.google.com/file/d/0B-0IlKCrjxd4UjB1elB4ai11VEU/view?usp=sharing'><img src='res/attach10.png'></a>" +
+                      "<a target='_blank' href='https://github.com/Wikiemol'><img src='" + willo.HOST_RES + "github10.png'></a>" + 
+                      "<a href='mailto:kingweko@gmail.com'><img src='" + willo.HOST_RES + "logotype181.png'></a>" +
+                      "<a target='_blank' href='https://drive.google.com/file/d/0B-0IlKCrjxd4UjB1elB4ai11VEU/view?usp=sharing'><img src='"
+                      + willo.HOST_RES + "attach10.png'></a>" +
                   "</div>";
 
     willo.createInformationWell({
@@ -143,7 +158,7 @@ willo.changeFontSize = function() {
 }
 
 window.onload = function() {
-    console.log("load");
+    //console.log("load");
     $(window).resize(function () {
         willo.changeFontSize();
     });
